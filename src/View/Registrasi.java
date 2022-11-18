@@ -51,11 +51,11 @@ public class Registrasi {
         JLabel label3 = new JLabel();
         JLabel label4 = new JLabel();
         JLabel label5 = new JLabel();
-        JLabel label6 = new JLabel();
+      JLabel label6 = new JLabel();
 
         label6.setText("User Followers");
         label6.setBounds(80, 60, 200, 30);
-        label6.setFont(myFont);
+        label6.setFont(myFont2);
         
         JTextField userFollowers = new JTextField();
         userFollowers.setBounds(170, 60, 200, 30);
@@ -87,10 +87,6 @@ public class Registrasi {
         jk1.setFont(myFont);
         jk2.setBounds(300, 250, 200, 30);
         jk2.setFont(myFont);
-        
-        label6.setText("User Followers");
-        label6.setBounds(80, 100, 200, 30);
-        label6.setFont(myFont2);
 
         conn.connect();
         String query = "SELECT categoryId, categoryName FROM categoryuser";
@@ -166,7 +162,7 @@ public class Registrasi {
                 if (username.getText().isEmpty() || email.getText().isEmpty() || pass.getPassword().equals("") || Controller.UserController.findJK(jk1, jk2).isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Semua kolom wajib diisi!");
                 } else {
-                    Controller.UserController.register(username.getText(), email.getText(), pass.getText(), Controller.UserController.findJK(jk1, jk2), cat.getCategoryId());
+                    Controller.UserController.register(username.getText(), email.getText(), pass.getText(), Controller.UserController.findJK(jk1, jk2), cat.getCategoryId(), userFollowers.getText().toString());
                 }
             }
         });

@@ -52,10 +52,10 @@ public class UserController {
         }
     }
     
-    public static void register(String userName, String userEmail, String userPassword, String userGender, int userCategory) {
+    public static void register(String userName, String userEmail, String userPassword, String userGender, int userCategory, String userFollowers) {
         DatabaseHandler conn = new DatabaseHandler();
         conn.connect();
-        String query = "INSERT INTO users(userName, userEmail, userPassword, userGender, userCategory) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO users(userName, userEmail, userPassword, userGender, userCategory, userFollowers) VALUES(?,?,?,?,?,?)";
         try {
             MessageDigest m = MessageDigest.getInstance("MD5");
             m.update(userPassword.getBytes());
@@ -75,6 +75,7 @@ public class UserController {
             stmt.setString(3, userPassword);
             stmt.setString(4, userGender);
             stmt.setInt(5, userCategory);
+            stmt.setString(6, userFollowers);
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Berhasil melakukan registrasi");
             
